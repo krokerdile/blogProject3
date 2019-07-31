@@ -1,0 +1,23 @@
+<header>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</header>
+
+<body>
+    {% comment %} 부트스트랩을 활용하여 손쉽게 만들기 {% endcomment %}
+    <div class="container">
+        <br>
+            <form action="{% url 'create' %}">  
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Title</label>
+                    <input name ="title" type="text" class="form-control" id="formGroupExampleInput" placeholder="제목을 적어주세요">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Body</label>
+                    <textarea class="form-control"  name ="body" id="exampleFormControlTextarea1" placeholder="내용을 적어주세요" rows="10"></textarea>
+                </div>
+                <input type="hidden" name="user_id" value="{{user.id}}">
+                <button type="submit" class="btn btn-primary btn-lg btn-block"><strong>SUBMIT</strong></button>
+            </form>
+    </div>
+</body>

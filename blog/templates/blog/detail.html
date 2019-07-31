@@ -1,0 +1,30 @@
+
+
+<header>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</header>
+
+<body>
+    <div class="container">
+        <h1> {{blog.title}} </h1>
+        <p> {{blog.body}} </p>
+        <p> {{blog.pub_date}} </p>
+        <a href="{% url 'post_like' blog.id %}">
+            {{message}}
+        </a><br>{{blog.like_count}}명이 좋아 합니다.
+        <hr> 
+        <!-- hr 줄 끄어 주는 기능 -->
+        <h3>Comment</h3>
+        {% for comment in blog.comment_set.all %}
+            <p>{{comment.body}}</p>
+        {% endfor %}
+        <form action="{% url 'comment_create' blog.id %}">
+            <input type="text" name="content" placeholder="댓글 입력">
+            <button type="submit">작성</button>
+        </form>
+        <a href="{% url 'home' %}"><button type="button" class="btn btn-primary">호옴</button></a>
+        <a href="{% url 'edit' blog.id %}"><button type="button" class="btn btn-danger">에딧</button></a>
+        <a href="{% url 'delete' blog.id %}"><button type="button" class="btn btn-warning">사악제</button></a>
+        <br><br>
+    </div>
+</body
